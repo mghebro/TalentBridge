@@ -3,7 +3,7 @@
 public enum ROLES
 {
     USER,
-    ADMIN,
-    CONSULTANT,
+    ORGANIZATION_ADMIN,
+    ORGANIZATION,
     HANDCRAFTMAN,
 }

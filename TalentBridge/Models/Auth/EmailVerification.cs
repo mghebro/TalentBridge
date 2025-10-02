@@ -9,7 +9,7 @@ public class EmailVerification : BaseEntity
     public string Token { get; set; } = Guid.NewGuid().ToString();
     public DateTime ExpiresAt { get; set; } = DateTime.UtcNow.AddMinutes(15);
 
-    // Relations   
+    
     public int UserId { get; set; }
     public User User { get; set; }
 }
