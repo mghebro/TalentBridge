@@ -1,5 +1,6 @@
 ﻿using TalentBridge.Common.Entities;
 using TalentBridge.Enums.Auth;
+using TalentBridge.Models.UserRelated;
 
 namespace TalentBridge.Models.Roles;
 
@@ -14,4 +15,5 @@ public class User : BaseEntity
     public string AuthProvider { get; set; } = "Email";
     public string LastName { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
+    public UserDetails? Details { get; set; }
 }
