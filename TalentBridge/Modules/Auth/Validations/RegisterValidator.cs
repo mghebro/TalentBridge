@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using TalentBridge.Modules.Auth.DTOs.Requests;
 
 namespace TalentBridge.Modules.Auth.Validations;
 
-public class RegisterValidator : AbstractValidator<Models.Roles.User>
+public class RegisterValidator : AbstractValidator<RegisterRequest>
 {
     public RegisterValidator()
     {

@@ -9,7 +9,7 @@ public class HRManager : BaseEntity
     public User User { get; set; }
     
     public int OrganizationId { get; set; }
-    public Organization<dynamic> Organization { get; set; }
+    public Organization Organization { get; set; }
     
     public string Position { get; set; }
     public string? Department { get; set; }
