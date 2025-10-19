@@ -7,6 +7,7 @@ using TalentBridge.Modules.Auth;
 using TalentBridge.Enums.Auth;
 using TalentBridge.Data;
 using System.Text;
+using FluentValidation;
 
 namespace TalentBridge.Core.Extensions;
 
@@ -17,15 +18,16 @@ public static class ServiceExtensions
     {
         services.AddDatabaseServices(configuration);
         services.AddModuleServices();
-        services.AddBasicServices();
         services.AddOtherServices(configuration);
         services.AddAuthServices(configuration);
+        services.AddBasicServices();
         services.AddAuthorizationPolicies();
         services.AddSignalR();
+        
+        
         return services;
     }
 
-    [Obsolete]
     private static IServiceCollection AddBasicServices(this IServiceCollection services)
     {
         services.AddControllers()
@@ -33,10 +35,8 @@ public static class ServiceExtensions
             {
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-            })
-            .AddFluentValidation(config =>
+            }).AddFluentValidation(config =>
             {
-                // Automatically register all validators from this assembly
                 config.RegisterValidatorsFromAssemblyContaining<Program>();
             });
 
@@ -73,7 +73,7 @@ public static class ServiceExtensions
         return services;
     }
 
-    private static IServiceCollection AddDatabaseServices(this IServiceCollection services,
+    public static IServiceCollection AddDatabaseServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDbContext<DataContext>(options =>
@@ -102,8 +102,9 @@ public static class ServiceExtensions
 
     private static IServiceCollection AddOtherServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAutoMapper(typeof(Program).Assembly);
 
+        services.AddAutoMapper(typeof(Program).Assembly);
+        services.AddValidatorsFromAssembly(typeof(Program).Assembly);
     
         services.AddCors(options =>
         {

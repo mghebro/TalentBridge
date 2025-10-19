@@ -1,5 +1,5 @@
-﻿using TalentBridge.Modules.Auth.DTOs.Requests;
-using FluentValidation;
+﻿using FluentValidation;
+using TalentBridge.Modules.Auth.DTOs.Requests;
 
 namespace TalentBridge.Modules.Auth.Validations;
 

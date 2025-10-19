@@ -20,15 +20,16 @@ public class AuthService : IAuthService
     private readonly IJWTService _jwtService;
     private readonly RegisterValidator _registerValidator;
     private readonly IHttpContextAccessor _httpContextAccessor;
-
+private readonly LoginValidator _loginValidator;
     public AuthService(IMapper mapper, DataContext context, IJWTService jwtService, RegisterValidator registerValidator,
-        IHttpContextAccessor httpContextAccessor)
+        IHttpContextAccessor httpContextAccessor , LoginValidator loginValidator)
     {
         _mapper = mapper;
         _context = context;
         _jwtService = jwtService;
         _registerValidator = registerValidator;
         _httpContextAccessor = httpContextAccessor;
+        _loginValidator = loginValidator;
     }
 
     public async Task<ApiResponse<bool>> Register(RegisterRequest request)
@@ -46,7 +47,7 @@ public class AuthService : IAuthService
 
         var user = _mapper.Map<User>(request);
         user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        var result = _registerValidator.Validate(user);
+        var result = _registerValidator.Validate(request);
 
         if (!result.IsValid)
         {

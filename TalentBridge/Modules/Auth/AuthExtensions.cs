@@ -23,7 +23,6 @@ public static class AuthExtensions
             options.AddPolicy("Universal", policy => policy.RequireRole("Host, Admin"));
         });
 
-        services.AddScoped<IValidator<LoginRequest>, LoginValidator>();
 
         return services;
     }

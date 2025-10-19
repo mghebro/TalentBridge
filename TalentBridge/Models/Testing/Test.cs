@@ -7,7 +7,7 @@ namespace TalentBridge.Models;
 public class Test : BaseEntity
 {
     public int OrganizationId { get; set; }
-    public Organization<dynamic> Organization { get; set; }
+    public Organization Organization { get; set; }
     
     public int CreatedBy { get; set; }
     public HRManager CreatedByHRManager { get; set; }
