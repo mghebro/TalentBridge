@@ -31,4 +31,13 @@
 	  <Content Include="TalentBridge.sln" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="TalentBridge\appsettings.Development.json" />
+	  <_ContentIncludedByDefault Remove="TalentBridge\appsettings.json" />
+	  <_ContentIncludedByDefault Remove="TalentBridge\obj\project.assets.json" />
+	  <_ContentIncludedByDefault Remove="TalentBridge\obj\project.packagespec.json" />
+	  <_ContentIncludedByDefault Remove="TalentBridge\obj\TalentBridge.csproj.nuget.dgspec.json" />
+	  <_ContentIncludedByDefault Remove="TalentBridge\Properties\launchSettings.json" />
+	</ItemGroup>
+
 </Project>
