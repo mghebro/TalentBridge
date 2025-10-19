@@ -92,8 +92,8 @@ public static class ServiceExtensions
     {
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("ConsultantOnly", policy => policy.RequireRole(ROLES.CONSULTANT.ToString()));
-            options.AddPolicy("AdminOnly", policy => policy.RequireRole(ROLES.ADMIN.ToString()));
+            options.AddPolicy("ORGAdmin", policy => policy.RequireRole(ROLES.ORGANIZATION_ADMIN.ToString()));
+            options.AddPolicy("ORG", policy => policy.RequireRole(ROLES.ORGANIZATION.ToString()));
             options.AddPolicy("HandCraftManOnly", policy => policy.RequireRole(ROLES.HANDCRAFTMAN.ToString()));
             options.AddPolicy("UserOnly", policy => policy.RequireRole(ROLES.USER.ToString()));
         });
