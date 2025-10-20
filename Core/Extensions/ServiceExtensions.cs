@@ -8,6 +8,9 @@ using TalentBridge.Enums.Auth;
 using TalentBridge.Data;
 using System.Text;
 using FluentValidation;
+using TalentBridge.Common.Services;
+using TalentBridge.Infrastructure.Services;
+using TalentBridge.Modules.Organizations;
 
 namespace TalentBridge.Core.Extensions;
 
@@ -85,6 +88,7 @@ public static class ServiceExtensions
     private static IServiceCollection AddModuleServices(this IServiceCollection services)
     {
         services.AddAuthModule();
+        services.AddORGModule();
         return services;
     }
 
@@ -116,6 +120,7 @@ public static class ServiceExtensions
                     .AllowCredentials();
             });
         });
+        services.AddScoped<IFileService, FileService>();
 
         return services;
     }

@@ -503,4 +503,42 @@ private readonly LoginValidator _loginValidator;
             Message = "Password reset successfully",
         };
     }
+
+    public async Task<ApiResponse<bool>> ChangePassword(int userId, ChangePasswordRequest request)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (!BCrypt.Net.BCrypt.Verify(request.OldPassword, user.Password))
+        {
+
+            return new ApiResponse<bool>
+            {
+                Data = false,
+                Status = StatusCodes.Status400BadRequest,
+                Message = "Invalid old password"
+
+            };
+        }
+
+        if (request.NewPassword != request.ConfirmPassword)
+        { return new ApiResponse<bool>
+            {
+                Data = false,
+                Status = StatusCodes.Status400BadRequest,
+                Message = "Passwords Does not match"
+
+            };
+        }
+
+        user.Password = BCrypt.Net.BCrypt.HashPassword(request.NewPassword);
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+        return new ApiResponse<bool>
+        {
+            Data = true,
+            Status = StatusCodes.Status200OK,
+            Message = "Password changed successfully"
+        };
+    }
 }
+

@@ -15,7 +15,7 @@ public class Application : BaseEntity
     public APPLICATION_STATUS Status { get; set; } = APPLICATION_STATUS.Pending;
     public string? CoverLetter { get; set; }
     public DateTime AppliedAt { get; set; } = DateTime.UtcNow;
-    
+    public DateTime? HiredAt { get; set; }
     public int? ReviewedBy { get; set; }
     public HRManager? ReviewedByHRManager { get; set; }
     public string? ReviewNotes { get; set; }

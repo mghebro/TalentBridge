@@ -1,9 +1,12 @@
-﻿namespace TalentBridge.Modules.Auth.DTOs.Requests;
+﻿using TalentBridge.Enums.Auth;
+
+namespace TalentBridge.Modules.Auth.DTOs.Requests;
 public class RegisterRequest
 {
     public string Email { get; set; }
     public string Password { get; set; }
     public string LastName { get; set; }
     public string FirstName { get; set; }
+    public ROLES DesiredRole { get; set; } = ROLES.USER; 
 
 }

@@ -24,7 +24,8 @@ public class Test : BaseEntity
     public TEST_DIFFICULTY Difficulty { get; set; } = TEST_DIFFICULTY.Medium;
     public bool IsActive { get; set; } = true;
     public string? Instructions { get; set; }
-    
+    public Vacancy Vacancy { get; set; }
+    public int VacancyId { get; set; }
     public List<Question>? Questions { get; set; }
     public List<TestAssignment>? Assignments { get; set; }
 }

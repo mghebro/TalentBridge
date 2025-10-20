@@ -15,6 +15,7 @@ public class HRManager : BaseEntity
     public string? Department { get; set; }
     public DateTime HiredDate { get; set; }
     public string? Permissions { get; set; } 
+    public bool IsActive { get; set; } = true;
     
     public List<Vacancy>? Vacancies { get; set; }
     public List<Test>? Tests { get; set; }

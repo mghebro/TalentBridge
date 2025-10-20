@@ -16,4 +16,5 @@ public interface IAuthService
     Task<ApiResponse<LoginResponse>> GetCurrentUser();
     Task<ApiResponse<bool>> SendResetPasswordLink(string email);
     Task<ApiResponse<bool>> ResetPassword(ResetPasswordTokenRequest request);
+    Task<ApiResponse<bool>> ChangePassword(int userId,  ChangePasswordRequest request);
 }

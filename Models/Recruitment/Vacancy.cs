@@ -33,7 +33,7 @@ public class Vacancy : BaseEntity
     public DateTime ApplicationDeadline { get; set; }
     public DateTime? PublishedAt { get; set; }
     public int ViewCount { get; set; } = 0;
-    
+    public List<Test>? Tests { get; set; }
     public List<Application>? Applications { get; set; }
     public List<SavedVacancy>? SavedByUsers { get; set; }
     public List<VacancyView>? Views { get; set; }
